@@ -1,11 +1,12 @@
-(ns om-next-play.core
+(ns om-next-play.devcards
   (:require
     [cljs.test :refer-macros [is async]]
     [goog.dom :as gdom]
     [om.next :as om :refer-macros [defui]]
     [om.dom :as dom]
     [datascript.core :as d]
-    [sablono.core :as sab :include-macros true])
+    [sablono.core :as sab :include-macros true]
+    [om-next-play.core :refer [hello Hello]])
   (:require-macros
     [devcards.core :as dc :refer [defcard deftest]]))
 
@@ -13,14 +14,8 @@
 
 (defcard first-card
          (sab/html [:div
-                    [:h1 "This is your first devcard!"]]))
+                    [:h1 "First devcard (in devcards src folder!"]]))
 
-(defui Hello
-       Object
-       (render [this]
-               (dom/p nil (-> this om/props :text))))
-
-(def hello (om/factory Hello))
 
 (defcard simple-component
          "Test that Om Next component work as regular React components."
@@ -51,22 +46,22 @@
 
 (def binder (om/factory Binder))
 
-(defcard basic-nested-component
-         "Test that component nesting works"
-         (binder {:reconciler r}))
-
-(deftest test-indexer
-         "Test indexer"
-         (let [idxr (get-in r [:config :indexer])]
-           (is (not (nil? idxr)) "Indexer is not nil in the reconciler")
-           (is (not (nil? @idxr)) "Indexer is IDeref")))
+;(defcard basic-nested-component
+;         "Test that component nesting works"
+;         (binder {:reconciler r}))
+;
+;(deftest test-indexer
+;         "Test indexer"
+;         (let [idxr (get-in r [:config :indexer])]
+;           (is (not (nil? idxr)) "Indexer is not nil in the reconciler")
+;           (is (not (nil? @idxr)) "Indexer is IDeref")))
 
 
 (defn main []
   ;; conditionally start the app based on wether the #main-app-area
   ;; node is on the page
   (if-let [node (.getElementById js/document "main-app-area")]
-    (js/React.render (sab/html [:div "This is working"]) node)))
+    (js/React.render (sab/html [:div "This is working (from devcards src folder)"]) node)))
 
 (main)
 

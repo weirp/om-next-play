@@ -1,1 +1,25 @@
 /* om-next-play CSS */
+
+.material-icons.md-18 { font-size: 18px; }
+
+.main-app-area {
+bg: yellow
+}
+
+.add-song-button {
+color: blue
+bg: red
+}
+
+.add-song-div {
+bg: yellow
+color: pink
+}
+.add-song-div {
+bg: yellow
+color: pink
+}
+
+#add-artist-btn {
+color: blue
+}
